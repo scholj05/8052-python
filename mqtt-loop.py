@@ -22,8 +22,8 @@ E = [	0, 	0, 	0	]
 
 def init():
 	print("init started...")
-	client.on_subscribe = on_subscribe()
-	client.on_message = on_message()
+	client.on_subscribe = on_subscribe
+	client.on_message = on_message
 	client.connect(BROKER_URL, BROKER_PORT)
 	client.subscribe(TOPIC, qos=1)
 	last_poll_time = time.time()
@@ -36,7 +36,7 @@ def on_subscribe(client, userdata, mid, granted_qos):
 
 def on_message(client, userdata, msg):
 	print(msg.topic + ": " + str(msg.payload))
-	Timer(0, blink(1, 1, self.B, 0.25))
+	Timer(0, blink(1, 1, B, 1))
 
 
 def blink(x, y, colour, blinkCount, delay):
