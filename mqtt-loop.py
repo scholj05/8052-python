@@ -19,17 +19,6 @@ B = [	0, 	0, 	150	]
 E = [	0, 	0, 	0	]
 
 
-
-def init():
-	print("init started...")
-	client.on_subscribe = on_subscribe
-	client.on_message = on_message
-	client.connect(BROKER_URL, BROKER_PORT)
-	client.subscribe(TOPIC, qos=1)
-	last_poll_time = time.time()
-	print("init complete.")
-
-
 def on_subscribe(client, userdata, mid, granted_qos):
 	print("Subscribed to " + str(mid) + " with QoS " + str(granted_qos))
 
@@ -60,6 +49,16 @@ def read_report():
 		msg = f"[ temperature: {snsr_data[0]},\npressure: {snsr_data[1]}\nhumidity: {snsr_data[2]}]" 
 		client.publish(TOPIC, msg, qos=1)
 
+
+def init():
+	print("init started...")
+	client.on_subscribe = on_subscribe
+	client.on_message = on_message
+	client.connect(BROKER_URL, BROKER_PORT)
+	client.subscribe(TOPIC, qos=1)
+	last_poll_time = time.time()
+	print("init complete.")
+	
 
 if __name__ == '__main__':
 	init()
