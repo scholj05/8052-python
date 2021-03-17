@@ -15,3 +15,8 @@ Instructions:
 11. Y (save changes)
 12. ENTER (confirm save)
 13. python3 mqtt-loop.py
+
+
+If you have unwanted local changes, you can overwrite them with the new remote files:
+1. git fetch --all
+2. git reset --hard origin/main
