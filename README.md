@@ -20,3 +20,8 @@ Instructions:
 If you have unwanted local changes, you can overwrite them with the new remote files:
 1. git fetch --all
 2. git reset --hard origin/main
+
+
+How to use the code:
+Look at the 'mqtt-sample.py' file for the simplest way to use the subscriber and publisher classes.
+The Sensors class adds functionality to the SenseHat class (such as temp sensor values adjusted for CPU temp and averaged), but can be used to directly access the SenseHat() object by calling sensors.sense.[attribute/method]
